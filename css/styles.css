@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap');
+
+/*ESQUEMAS DE COLOR*/
+:root {
+    --color-primary: #734222;
+    --color-bg: #eeddd2;
+    --color-text: #333333;
+    --color-accent: #8e402a;
+    --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.manual-dark {
+    --color-primary: #b17c54;
+    --color-bg: #59412f;
+    --color-text: #f0f0f0;
+    --color-accent: #dbbba6;
+    --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.manual-high-contrast {
+    --color-bg: #fefefe;
+    --color-text: #000000;
+    --color-accent: #555555;
+}
+
+body.manual-dark.manual-high-contrast {
+    --color-bg: #000000;
+    --color-text: #ffffff;
+    --color-accent: #cacaca;
+}
+
+/*ESTILOS GENERALES*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: "Montserrat", "Roboto", serif;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    transition: all 0.3s ease-in-out;
+    font-size: 13pt;
+}
+
+/*HEADER*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+header div button {
+    margin-left: 0.625rem;
+    padding: 0.3125rem 0.625rem;
+    border: none;
+    background: var(--color-bg);
+    color: var(--color-primary);
+    cursor: pointer;
+    border-radius: 0.3125rem;
+    font-size: 0.9rem;
+}
+
+/*BOTONES PARA CAMBIAR EL TEMA*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 3.75rem;
+    height: 1.875rem;
+    background-color: var(--color-shadow);
+    border: none;
+    border-radius: 0.9375rem;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.switch .slider {
+    position: absolute;
+    top: 0.1875rem;
+    left: 0.1875rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--color-bg);
+    border-radius: 50%;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.switch[aria-pressed="true"] .slider {
+    transform: translateX(1.875rem);
+}
+
+.slider svg {
+    width: 1rem;
+    height: 1rem;
+    fill: var(--color-primary);
+}
+
+/*CUERPO*/
+main {
+    flex: 1;
+    min-height: 86vh;
+    padding: 1rem;
+}
+
+main.detalle-producto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 100%; 
+    margin: 0 auto;
+    align-content: center;
+}
+
+main.detalle-producto section {
+    flex: 1 1 100%;
+}
+
+.producto-principal {
+    max-width: 100%;
+    border-radius: 0.3125rem;
+    box-shadow: 0 0.25rem 0.375rem var(--color-shadow);
+}
+
+.detalle-producto > section div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.prducto-miniatura {
+    width: 45%;
+    height: 6em;
+    cursor: pointer;
+    border: 1px solid var(--color-shadow);
+    border-radius: 0.3125rem;
+    margin-top: 1em;
+    transition: transform 0.2s ease;
+}
+
+.prducto-miniatura:hover {
+    transform: scale(1.1);
+}
+
+section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+section p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+section .price {
+    font-size: 1rem;
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+section button {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    border: none;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+section button:hover {
+    background-color: var(--color-primary);
+}
+
+/*FOOTER*/
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    margin-top: auto;
+}
+
+/* Tablet */
+@media (min-width: 576px) {
+    .prducto-miniatura {
+        width: 40%;
+        height: 6.5em;
+    }
+
+    main.detalle-producto section {
+        flex: 1 1 48%;
+    }
+
+    section h2 {
+        font-size: 1.75rem;
+    }
+
+    body {
+        font-size: 14pt;
+    }
+}
+
+/* Desktop pequeño */
+@media (min-width: 912px) and (orientation: landscape) {
+    main.detalle-producto {
+        gap: 1.5rem;
+    }
+
+    .prducto-miniatura {
+        width: 30%;
+        height: 7em;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    section button {
+        font-size: 1.125rem;
+        padding: 1rem 2rem;
+    }
+}
+
+/* Desktop grande */
+@media (min-width: 1023px) {
+    main {
+        height: 87.7vh;
+    }
+    main.detalle-producto {
+        gap: 2rem;
+        max-width: 75rem;
+    }
+
+    .producto-principal {
+        max-width: 100%;
+    }
+
+    section h2 {
+        font-size: 2.25rem;
+    }
+
+    body {
+        font-size: 15pt;
+    }
+
+    footer {
+        font-size: 1.125rem;
+    }
+}
+
+/*ALTERNAR COLORES*/
+@media (prefers-color-scheme: dark) {
+    body.manual-dark {
+        --color-primary: #734222;
+        --color-bg: #eeddd2;
+        --color-text: #333333;
+        --color-accent: #8e402a;
+        --color-shadow: rgba(0, 0, 0, 0.1);
+    }
+    
+    :root {
+        --color-primary: #b17c54;
+        --color-bg: #59412f;
+        --color-text: #f0f0f0;
+        --color-accent: #dbbba6;
+        --color-shadow: rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (prefers-contrast: more) {
+    :root {
+        --color-bg: #fefefe;
+        --color-text: #000000;
+        --color-accent: #555555;
+    }
+}
+
+@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
+    :root {
+        --color-bg: #000000;
+        --color-text: #ffffff;
+        --color-accent: #aaaaaa;
+    }
+}
